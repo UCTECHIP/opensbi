@@ -16,6 +16,9 @@
 #define BOOT_STATUS_RELOCATE_DONE	1
 #define BOOT_STATUS_BOOT_HART_DONE	2
 
+#define DCACHE_ENABLE
+#define TIMING_GATR
+
 .macro	MOV_3R __d0, __s0, __d1, __s1, __d2, __s2
 	add	\__d0, \__s0, zero
 	add	\__d1, \__s1, zero
@@ -46,6 +49,19 @@
 	.globl _start
 	.globl _start_warm
 _start:
+
+        /* UCTECHIP D-cache enable */
+#ifdef DCACHE_ENABLE
+#define MSTATUS_DD      (1U<<25)
+        li a0, MSTATUS_DD
+        csrrc x0, mstatus, a0
+#endif
+
+        /* UCTECHIP Timing gate enable */
+#ifdef TIMING_GATR
+        csrw 0x7c1, 0x0
+#endif
+
 	/* Find preferred boot HART id */
 	MOV_3R	s0, a0, s1, a1, s2, a2
 	call	fw_boot_hart
