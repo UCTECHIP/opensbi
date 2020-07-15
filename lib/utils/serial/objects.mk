@@ -9,3 +9,5 @@
 
 libsbiutils-objs-y += serial/uart8250.o
 libsbiutils-objs-y += serial/sifive-uart.o
+libsbiutils-objs-y += serial/uctechip-uart.o
+
