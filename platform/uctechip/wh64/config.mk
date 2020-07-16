@@ -27,7 +27,7 @@ platform-ldflags-y =
 # Some of these are guessed based on GCC compiler capabilities
 #
  PLATFORM_RISCV_XLEN = 64
- PLATFORM_RISCV_ABI = lp64
+ PLATFORM_RISCV_ABI = lp64d
  PLATFORM_RISCV_ISA = rv64gc
  PLATFORM_RISCV_CODE_MODEL = medany
 
