@@ -22,7 +22,7 @@
 
 #define WH_CLINT_ADDR				0x32000000
 
-#define WH_PLIC_ADDR				0xc0000000
+#define WH_PLIC_ADDR				0x3c000000
 #define WH_PLIC_NUM_SOURCES			15
 #define WH_PLIC_NUM_PRIORITIES			7
 
