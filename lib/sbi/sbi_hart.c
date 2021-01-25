@@ -30,9 +30,21 @@ static void mstatus_init(struct sbi_scratch *scratch, u32 hartid)
 {
 	const struct sbi_platform *plat = sbi_platform_ptr(scratch);
 
+	int ms = 0;
+
+	/* Enable VPU */
+	if (misa_extension('V'))
+		ms |= MSTATUS_VS;
+
 	/* Enable FPU */
 	if (misa_extension('D') || misa_extension('F'))
-		csr_write(CSR_MSTATUS, MSTATUS_FS);
+		ms |= MSTATUS_FS;
+
+	/* Enable extended inst */
+	if (misa_extension('X'))
+		ms |= MSTATUS_XS;
+
+	csr_write(CSR_MSTATUS, ms);
 
 	/* Enable user/supervisor use of perf counters */
 	if (misa_extension('S') && sbi_platform_has_scounteren(plat))
