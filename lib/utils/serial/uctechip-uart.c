@@ -26,17 +26,17 @@
 
 
 // control register
-#define UART_CON_FLUSH          1<<4  //flush the receive fifo
-#define UART_CON_TRS            1<<3  //transmit/receive select 0:receive 1:transmit
-#define UART_CON_ODD_EN         1<<1  //ODD parity enable
+#define UART_CON_FLUSH          (1<<4)  //flush the receive fifo
+#define UART_CON_TRS            (1<<3)  //transmit/receive select 0:receive 1:transmit
+#define UART_CON_ODD_EN         (1<<1)  //ODD parity enable
 
 
 // interrupt status register
-#define UART_IS_ECNT0           1<<7  //ETU timer overflow flag
-#define UART_IS_FIFO_NE         1<<6  //FIFO Not Empty flag
-#define UART_IS_FIFO_OV         1<<3  //FIFO overflow error
-#define UART_IS_TXEND           1<<2  //transmit finish flag
-#define UART_IS_TRE             1<<1  //transmit or receive parity error flag
+#define UART_IS_ECNT0           (1<<7)  //ETU timer overflow flag
+#define UART_IS_FIFO_NE         (1<<6)  //FIFO Not Empty flag
+#define UART_IS_FIFO_OV         (1<<3)  //FIFO overflow error
+#define UART_IS_TXEND           (1<<2)  //transmit finish flag
+#define UART_IS_TRE             (1<<1)  //transmit or receive parity error flag
 
 
 #define UART_REG(offset)        (*((volatile char*)(UART_CTRL_ADDR+offset)))
